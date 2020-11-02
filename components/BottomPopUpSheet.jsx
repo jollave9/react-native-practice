@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
     sheet: {
+        height: '70%',
         backgroundColor: 'white',
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15

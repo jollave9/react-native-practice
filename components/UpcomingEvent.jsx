@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Upcoming = () => (
+const UpcomingEvent = () => (
     <View style={styles.container}>
         <Text>
             Upcoming Event
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Upcoming;
+export default UpcomingEvent;

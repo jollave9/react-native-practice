@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, SectionList, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, SectionList, FlatList } from 'react-native';
 import Card from '../components/Card'
 import dummydata from '../dummydata'
 import BottomPopUpSheet from '../components/BottomPopUpSheet';
@@ -14,33 +14,35 @@ const Tab = createMaterialTopTabNavigator()
 // to be separated to different components
 // dirty coding from testing
 
-const Home = () => {
+const Home = ({ navigation }) => {
 
     const [data, setdata] = useState(dummydata)
 
     const [isModalOpen, setIsModalopen] = useState(false)
 
-    // const handlePress = (type) => {
-    //     if (type === 'Case Room')
-    //     setIsModalopen(true)
-    //     else if (type === 'Computer Lab' || type === 'Lecture Room') { }
-    // }
+    const handlePress = (type) => {
+        if (type === 'Case Room')
+            setIsModalopen(true)
+        else if (type === 'Computer Lab' || type === 'Lecture Room') {
+            navigation.navigate('Classrooms')
+        }
+    }
 
     return (
         <View style={styles.container}>
 
-            <TextInput placeholder="Search" style={styles.textInput} />
+            {/* <TextInput placeholder="Search" style={styles.textInput} /> */}
 
             {/*flatlist inside sectionlist is complicated*/}
             <FlatList
                 data={data}
                 renderItem={({ item }) => (
-                    <View style={{ marginVertical: 10 }}>
-                        <Text style={{ fontSize: 25, marginLeft: 10 }}>{item.building}</Text>
+                    <View style={{ margin: 20 }}>
+                        <Text style={{ fontSize: 25, marginBottom: 15 }}>{item.building}</Text>
                         <FlatList
                             data={item.room_types}
                             renderItem={({ item }) => (
-                                <Card handlePress={() => { setIsModalopen(true) }} type={item.name}>
+                                <Card handlePress={handlePress} type={item.name}>
                                     <View style={styles.img}>
 
                                     </View>
@@ -58,7 +60,7 @@ const Home = () => {
             <BottomPopUpSheet isOpen={isModalOpen} closeHandler={() => { setIsModalopen(false) }} >
                 <NameDescripton name="Case Room" desc="lorem ipsum" />
 
-                <View style={{ height: 300 }}>
+                <View style={{ flex: 1 }}>
                     <Tab.Navigator>
                         <Tab.Screen name="today" component={EventToday}></Tab.Screen>
                         <Tab.Screen name="upcoming" component={UpcomingEvent}></Tab.Screen>
@@ -72,8 +74,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     container: {
-        // marginTop: StatusBar.currentHeight,
-        marginBottom: 40 // to be fixed flatlist wont reach end
+        // marginBottom: 40 // to be fixed flatlist wont reach end
     },
     img: {
         backgroundColor: 'grey',

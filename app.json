@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "RAWR UI practice",
+    "githubUrl": "https://github.com/jollave9/react-native-practice.git"
   }
 }

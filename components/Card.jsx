@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
 // overriding styles not yet available
-// margin to be removed
 // styles to be changed to base figma
 
 const Card = ({ children, handlePress, type }) => (
@@ -16,7 +15,7 @@ const Card = ({ children, handlePress, type }) => (
 )
 const styles = StyleSheet.create({
     cardShadow: {
-        margin: 10,
+        marginHorizontal: 10,
         width: 250,
         height: 250,
         borderRadius: 15,
